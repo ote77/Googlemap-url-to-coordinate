@@ -15,14 +15,15 @@ const parseQueryString = url => {
 // Short Url from Google
 router.get('/:shortId', function (req, res, next) {
   const url = 'https://goo.gl/maps/' + req.params.shortId
-  console.log('<------ url ------>\n', url)
+  // console.log('<------ url ------>\n', url)
   Meta.parser(url, function (err, result) {
     if (err) {
       console.log('<------ ------>\n', err)
     }
     const params = parseQueryString(result.og.image)
-    console.log('<------ paramas ------>\n', params.ll)
-    res.json(params.ll)
+    const cor = params.ll ? params.ll : params.center.replace('%2C', ',')
+    console.log('<------ paramas ------>\n', cor)
+    res.json(cor)
   })
 })
 
