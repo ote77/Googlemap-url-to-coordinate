@@ -32,7 +32,7 @@ const modifyUrl = url => {
 }
 
 router.get('/:shortId', function (req, res) {
-  const uri = 'https://goo.gl/maps/' + req.params.shortId
+  const uri = 'https://maps.app.goo.gl/' + req.params.shortId
   request(
     {
       uri: uri,
